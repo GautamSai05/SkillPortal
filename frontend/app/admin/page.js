@@ -43,8 +43,9 @@ export default function AdminDashboard() {
 
   const cards = [
     { href: '/admin/categories', icon: '📂', title: 'Manage Categories', desc: 'Add, edit, or remove assessment categories', color: '#6366f1' },
-    { href: '/admin/tests', icon: '📝', title: 'Manage Tests', desc: 'Create and configure tests within categories', color: '#3b82f6' },
-    { href: '/admin/questions', icon: '❓', title: 'Manage Questions', desc: 'Add MCQ and coding questions to tests', color: '#10b981' },
+    { href: '/admin/tests', icon: '📝', title: 'Add or Edit Tests', desc: 'Create new tests or update existing ones', color: '#3b82f6' },
+    { href: '/admin/questions', icon: '❓', title: 'Add Questions to Tests', desc: 'Attach MCQ or coding questions to any test', color: '#10b981' },
+    { href: '/admin/tests', icon: '✏️', title: 'Modify Test Details', desc: 'Update duration, difficulty, category, and description', color: '#f59e0b' },
   ];
 
   return (
@@ -55,7 +56,8 @@ export default function AdminDashboard() {
           <h1 className="text-3xl font-bold text-slate-800 mb-1" style={{ fontFamily: 'Poppins, sans-serif' }}>
             Admin <span className="gradient-text">Dashboard</span>
           </h1>
-          <p className="text-slate-500 mb-8">Manage categories, tests, and questions</p>
+          <p className="text-slate-500 mb-2">Manage categories, tests, and questions. Admin accounts are for creating and editing assessments, not taking them.</p>
+          <p className="text-slate-500 mb-8">Use the cards below to add tests, add questions, or modify existing content.</p>
         </motion.div>
 
         {loading ? <LoadingSpinner /> : (
@@ -66,7 +68,7 @@ export default function AdminDashboard() {
               <StatsCard icon="❓" label="Questions" value={stats.questions} color="#10b981" delay={0.2} />
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               {cards.map((card, i) => (
                 <motion.a key={card.href} href={card.href}
                   initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}

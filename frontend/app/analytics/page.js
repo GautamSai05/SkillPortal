@@ -18,6 +18,7 @@ export default function AnalyticsPage() {
 
   useEffect(() => {
     if (!authLoading && !user) { router.push('/login'); return; }
+    if (!authLoading && user?.role === 'admin') { router.push('/admin'); return; }
     if (user) fetchAnalytics();
   }, [user, authLoading]);
 

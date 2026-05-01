@@ -34,6 +34,7 @@ export default function TestPage() {
 
   useEffect(() => {
     if (!authLoading && !user) { router.push('/login'); return; }
+    if (!authLoading && user?.role === 'admin') { router.push('/admin'); return; }
     if (user && params.testId) fetchTest();
   }, [user, authLoading, params.testId]);
 
@@ -138,6 +139,7 @@ export default function TestPage() {
 
     try {
       const { data } = await API.post('/test/submit', {
+        userId: user._id,
         testId: params.testId, answers: answerArray,
         timeTaken, violations, violationLog,
       });

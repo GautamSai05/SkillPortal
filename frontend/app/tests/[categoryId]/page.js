@@ -20,6 +20,7 @@ export default function TestsByCategoryPage() {
 
   useEffect(() => {
     if (!authLoading && !user) { router.push('/login'); return; }
+    if (!authLoading && user?.role === 'admin') { router.push('/admin'); return; }
     if (user && params.categoryId) fetchTests();
   }, [user, authLoading, params.categoryId]);
 
