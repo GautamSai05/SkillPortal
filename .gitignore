@@ -20,3 +20,4 @@ out/
 /.firebase/
 /.parcel-cache/
 public/static
+.vercel
