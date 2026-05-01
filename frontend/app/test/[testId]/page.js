@@ -31,6 +31,7 @@ export default function TestPage() {
 
   const timerRef = useRef(null);
   const startTimeRef = useRef(null);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     if (!authLoading && !user) { router.push('/login'); return; }
@@ -84,6 +85,65 @@ export default function TestPage() {
       document.removeEventListener('fullscreenchange', handleFullscreenChange);
     };
   }, [started, violations]);
+
+  // When test is started, lock down navigation and outside interactions
+  useEffect(() => {
+    if (!started) {
+      // restore
+      document.body.style.pointerEvents = '';
+      window.onbeforeunload = null;
+      return;
+    }
+
+    // Disable pointer events outside the test container by setting body to none
+    document.body.style.pointerEvents = 'none';
+    if (containerRef.current) containerRef.current.style.pointerEvents = 'auto';
+
+    const preventNav = (e) => {
+      // Prevent default navigation keys
+      const key = e.key?.toLowerCase();
+      if (e.key === 'F5' || (e.ctrlKey && (key === 'r' || key === 'w' || key === 't'))) {
+        e.preventDefault();
+        toast.error('Navigation is disabled during the test');
+      }
+    };
+
+    const preventContext = (e) => {
+      e.preventDefault();
+      toast('Right click disabled during test', { duration: 1500 });
+    };
+
+    const beforeUnload = (e) => {
+      e.preventDefault();
+      e.returnValue = '';
+      return '';
+    };
+
+    const captureClicks = (e) => {
+      // If click is outside the test container, prevent it
+      if (!containerRef.current) return;
+      const inside = e.target && containerRef.current.contains(e.target);
+      if (!inside) {
+        e.preventDefault();
+        e.stopPropagation();
+        toast.error('Cannot interact outside the test until submission');
+      }
+    };
+
+    document.addEventListener('keydown', preventNav, { capture: true });
+    document.addEventListener('contextmenu', preventContext, { capture: true });
+    document.addEventListener('click', captureClicks, true);
+    window.addEventListener('beforeunload', beforeUnload);
+
+    return () => {
+      document.body.style.pointerEvents = '';
+      if (containerRef.current) containerRef.current.style.pointerEvents = '';
+      document.removeEventListener('keydown', preventNav, { capture: true });
+      document.removeEventListener('contextmenu', preventContext, { capture: true });
+      document.removeEventListener('click', captureClicks, true);
+      window.removeEventListener('beforeunload', beforeUnload);
+    };
+  }, [started]);
 
   const addViolation = useCallback((reason) => {
     setViolations(prev => {
@@ -217,7 +277,7 @@ export default function TestPage() {
 
   // ACTIVE TEST — LIGHT MODE
   return (
-    <div className="min-h-screen flex flex-col page-gradient">
+    <div ref={containerRef} className="min-h-screen flex flex-col page-gradient">
       {/* Top bar */}
       <div className="sticky top-0 z-50 flex items-center justify-between px-4 py-3"
         style={{ background: 'rgba(255,255,255,0.85)', borderBottom: '1px solid rgba(99,102,241,0.1)', backdropFilter: 'blur(20px) saturate(180%)' }}>
