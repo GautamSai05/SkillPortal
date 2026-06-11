@@ -54,7 +54,7 @@ export default function HomePage() {
           transition={{ duration: 0.8 }} className="text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold mb-6"
             style={{ background: 'rgba(99,102,241,0.1)', color: '#4f46e5', border: '1px solid rgba(99,102,241,0.15)' }}>
-            🚀 SHL Practice Platform
+            SHL Practice Platform
           </div>
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 text-slate-900"
             style={{ fontFamily: 'Poppins, sans-serif' }}>
@@ -68,7 +68,7 @@ export default function HomePage() {
               Start Practicing <HiArrowRight className="w-4 h-4" />
             </Link>
             <Link href="/login" className="btn-secondary px-8 py-3.5 text-sm inline-block font-medium">
-              Sign In to Dashboard
+              Sign In to your Dashboard
             </Link>
           </div>
         </motion.div>

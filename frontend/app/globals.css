@@ -36,7 +36,6 @@ body {
   font-family: 'Inter', sans-serif;
   overflow-x: hidden;
 }
-
 /* ─── Premium Glass Card ─── */
 .glass-card {
   background: rgba(255, 255, 255, 0.82);
@@ -85,7 +84,7 @@ body {
   letter-spacing: 0.01em;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow:
-    0 2px 8px rgba(99, 102, 241, 0.35),
+    0 2px 8px rgba(99, 102, 241, 0.34),
     inset 0 1px 0 rgba(255, 255, 255, 0.15);
   position: relative;
   overflow: hidden;
@@ -100,7 +99,7 @@ body {
 }
 .btn-primary:hover {
   box-shadow:
-    0 4px 16px rgba(99, 102, 241, 0.45),
+    0 4px 16px rgba(99, 101, 241, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
@@ -109,7 +108,7 @@ body {
 }
 .btn-primary:active {
   transform: translateY(0);
-  box-shadow: 0 2px 6px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 2px 6px rgba(99, 101, 241, 0.3);
 }
 
 /* ─── Secondary / Outline Button ─── */
