@@ -11,7 +11,6 @@ if (USE_MOCK) {
     baseURL: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api',
     headers: { 'Content-Type': 'application/json' },
   });
-
   // Add token to requests
   API.interceptors.request.use((config) => {
     if (typeof window !== 'undefined') {
@@ -20,7 +19,6 @@ if (USE_MOCK) {
     }
     return config;
   });
-
   // Handle auth errors
   API.interceptors.response.use(
     (response) => response,
