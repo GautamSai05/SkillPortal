@@ -1,13 +1,13 @@
 'use client';
 
+import Header from '@/components/Header';
+import { EmptyState, SkeletonCard, StatsCard } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
-import { useRouter } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import API from '@/lib/api';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import { StatsCard, SkeletonCard, EmptyState } from '@/components/ui';
-import API from '@/lib/api';
+import { useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 
 export default function DashboardPage() {
@@ -105,7 +105,7 @@ export default function DashboardPage() {
         {/* Recent Activity */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }} className="mt-10">
           <h2 className="text-xl font-semibold text-slate-800 mb-4" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Recent Activity
+            Recent Activities
           </h2>
           {recentResults.length === 0 ? (
             <EmptyState icon="📋" title="No tests taken yet" message="Take your first assessment to see your results here." />
