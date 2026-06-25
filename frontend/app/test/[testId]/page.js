@@ -1,13 +1,13 @@
 'use client';
 
 import { useAuth } from '@/context/AuthContext';
-import { useRouter, useParams } from 'next/navigation';
-import { useEffect, useState, useRef, useCallback } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
 import API from '@/lib/api';
-import toast from 'react-hot-toast';
+import { AnimatePresence, motion } from 'framer-motion';
 import dynamic from 'next/dynamic';
-import { HiClock, HiExclamation, HiChevronLeft, HiChevronRight } from 'react-icons/hi';
+import { useParams, useRouter } from 'next/navigation';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import toast from 'react-hot-toast';
+import { HiChevronLeft, HiChevronRight, HiClock, HiExclamation } from 'react-icons/hi';
 
 const Editor = dynamic(() => import('@monaco-editor/react'), { ssr: false });
 
@@ -261,7 +261,7 @@ export default function TestPage() {
             <p className="text-sm font-semibold text-amber-700 mb-2">⚠️ Important Rules:</p>
             <ul className="text-sm text-slate-600 space-y-1">
               <li>• The test will enter fullscreen mode</li>
-              <li>• Tab switching and window blur are monitored</li>
+              <li>• Tab switching and window blur will be monitored</li>
               <li>• You have 3 warnings before auto-submit</li>
               <li>• Timer starts immediately after clicking begin</li>
             </ul>
