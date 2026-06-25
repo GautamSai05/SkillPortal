@@ -268,7 +268,7 @@ export default function TestPage() {
           </div>
 
           <button onClick={startTest} className="btn-primary w-full py-3.5 text-sm">
-            Begin Test 🚀
+            Begin Test
           </button>
         </motion.div>
       </div>
