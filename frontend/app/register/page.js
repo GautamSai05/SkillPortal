@@ -1,12 +1,12 @@
 'use client';
 
-import { useState } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { useRouter } from 'next/navigation';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 import toast from 'react-hot-toast';
-import { HiUser, HiMail, HiLockClosed, HiEye, HiEyeOff } from 'react-icons/hi';
+import { HiEye, HiEyeOff, HiLockClosed, HiMail, HiUser } from 'react-icons/hi';
 
 export default function RegisterPage() {
   const { register } = useAuth();
@@ -61,7 +61,7 @@ export default function RegisterPage() {
             SP
           </motion.div>
           <h1 className="text-3xl font-bold text-slate-800" style={{ fontFamily: 'Poppins, sans-serif' }}>
-            Create Account
+            Create New Account
           </h1>
           <p className="text-slate-500 mt-2">Join SkillPortal and start practicing</p>
         </div>
