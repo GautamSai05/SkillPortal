@@ -1,7 +1,6 @@
 'use client';
 
 import { motion } from 'framer-motion';
-
 export function SkeletonCard() {
   return (
     <div className="glass-card p-6">
