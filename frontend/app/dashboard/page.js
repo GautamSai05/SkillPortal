@@ -60,6 +60,7 @@ export default function DashboardPage() {
           <p className="text-slate-500 mt-1">Here&apos;s your learning progress overview</p>
         </motion.div>
 
+
         {/* Stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
           <StatsCard icon="📝" label="Tests Taken" value={totalTests} color="#6366f1" delay={0} />
@@ -67,6 +68,7 @@ export default function DashboardPage() {
           <StatsCard icon="📊" label="Avg Accuracy" value={`${avgAccuracy}%`} color="#3b82f6" delay={0.2} />
           <StatsCard icon="🏆" label="Categories" value={categories.length} color="#f59e0b" delay={0.3} />
         </div>
+
 
         {/* Categories */}
         <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.3 }}>
