@@ -1,6 +1,6 @@
-import "./globals.css";
-import { Toaster } from "react-hot-toast";
 import { AuthProvider } from "@/context/AuthContext";
+import { Toaster } from "react-hot-toast";
+import "./globals.css";
 
 export const metadata = {
   title: "SkillPortal – Skill Assessment & SHL Practice Platform",
@@ -36,6 +36,7 @@ export default function RootLayout({ children }) {
               error: { iconTheme: { primary: '#ef4444', secondary: '#fef2f2' } },
             }}
           />
+          
         </AuthProvider>
       </body>
     </html>
