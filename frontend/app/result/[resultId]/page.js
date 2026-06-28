@@ -1,14 +1,14 @@
 'use client';
 
+import Header from '@/components/Header';
+import { ErrorState, LoadingSpinner } from '@/components/ui';
 import { useAuth } from '@/context/AuthContext';
-import { useRouter, useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
+import API from '@/lib/api';
 import { motion } from 'framer-motion';
 import Link from 'next/link';
-import Header from '@/components/Header';
-import { LoadingSpinner, ErrorState } from '@/components/ui';
-import API from '@/lib/api';
-import { HiArrowLeft, HiCheckCircle, HiXCircle, HiClock, HiExclamation } from 'react-icons/hi';
+import { useParams, useRouter } from 'next/navigation';
+import { useEffect, useState } from 'react';
+import { HiArrowLeft, HiCheckCircle, HiClock, HiExclamation, HiXCircle } from 'react-icons/hi';
 
 export default function ResultPage() {
   const { user, loading: authLoading } = useAuth();
@@ -22,6 +22,7 @@ export default function ResultPage() {
     if (!authLoading && !user) { router.push('/login'); return; }
     if (user && params.resultId) fetchResult();
   }, [user, authLoading, params.resultId]);
+
 
   const fetchResult = async () => {
     try {
@@ -38,6 +39,7 @@ export default function ResultPage() {
   if (loading) return <div className="min-h-screen page-gradient"><Header /><LoadingSpinner /></div>;
   if (error) return <div className="min-h-screen page-gradient"><Header /><div className="max-w-4xl mx-auto px-4 py-8"><ErrorState message={error} /></div></div>;
 
+  
   const r = result;
   const formatTime = (s) => {
     const m = Math.floor(s / 60);
